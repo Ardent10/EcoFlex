@@ -32,6 +32,12 @@ const cartSlice = createSlice({
             return state;
          }) 
         },
+        removeAll: (state,action) => {
+            state.quantity = 0;
+            state.products = [];
+            state.total = 0;
+            toast.error("All Products removed from cart 🗑",{position:"top-center"});
+          },
     },
 });
 

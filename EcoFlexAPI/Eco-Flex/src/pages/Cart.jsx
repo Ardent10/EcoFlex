@@ -10,8 +10,8 @@ import StripeCheckout from 'react-stripe-checkout';
 import {userRequest} from "../requestMethod";
 import { useNavigate,Link } from 'react-router-dom';
 import { searchLinks } from '../data';
-import { removeProduct } from '../redux/cartRedux';
-import { toast } from "react-toastify";
+import { removeProduct,removeAll } from '../redux/cartRedux';
+// import { toast } from "react-toastify";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -224,20 +224,16 @@ const Removebtn = styled.button`
 const Cart = () => {
     
     const cart = useSelector((state)=>state.cart);   //For cart items
-    const userLogin = useSelector((state)=>state.user.currentUser); //to check if user if loggedIn
     const [stripeToken, setStripeToken] = useState(null); //for payment
+    const userLogin = useSelector((state)=>state.user.currentUser); //to check if user if loggedIn
    
-   let loggedIn=false; 
-   const checkUser = () =>{
-       if(userLogin===null){
-          toast.error("You are not Logged in. Login First",{position:"top-center"});
-           navigate("/login");
-       }
-       return loggedIn = true;
-    }
-    console.log(loggedIn);
 
    const dispatch = useDispatch();
+   
+   const RemoveAll = ()=>{
+       dispatch(removeAll());
+   }
+
    const handleRemove = (id) =>{
         dispatch(removeProduct(id));
         // console.log(id);
@@ -245,7 +241,7 @@ const Cart = () => {
    
    
    const onToken = (token) =>{
-     loggedIn && setStripeToken(token); 
+     setStripeToken(token); 
    }
     // const history = useNavigate();
     const navigate = useNavigate();
@@ -259,10 +255,11 @@ const Cart = () => {
           try {
             const res = await userRequest.post("/checkout/payment", {
               tokenId: stripeToken.id,
-              amount: 500,
+              amount: cart.total*100,
             });
 
             navigate("/success", {state:res});
+            dispatch(removeAll());
           } 
           catch(err)
           {
@@ -280,24 +277,15 @@ const Cart = () => {
                 <Wrapper>
                     <Title>YOUR CART</Title>
                     <Top>
-                    <Link to="/products"><TopBotton>CONTINUE SHOPPING</TopBotton></Link>
+                        <Link to="/products"><TopBotton>CONTINUE SHOPPING</TopBotton></Link>
+                        {/* <a href="/products"><TopBotton>CONTINUE SHOPPING</TopBotton></a> */}
                         
                         <TopTexts>
                             <TopText><ShoppingBag style={{margin:"-3px 2px", color: "teal"}}/> BAG({cart.quantity})</TopText>
                             <TopText><Favorite style={{margin:"-3px 2px", color: "red"}}/> WISHLIST(0)</TopText>
                         </TopTexts>
-                           <StripeCheckout
-                                name="Ecofelx"
-                                image="https://avatars.githubusercontent.com/Ardent10"
-                                billingAddress
-                                shippingAddress
-                                description={`Your total is ₹ ${cart.total}`}
-                                currency="INR"
-                                amount={cart.total*100}
-                                token={onToken}
-                                stripeKey={KEY}>
-                                <TopBotton type="filled">CHECKOUT NOW</TopBotton>
-                            </StripeCheckout>
+                    
+                        <TopBotton disabled={cart.products.length===0} onClick={RemoveAll} >Remove All</TopBotton>
                     </Top>
                     <Bottom>
                     
@@ -376,8 +364,11 @@ const Cart = () => {
                                 currency="INR"
                                 amount={cart.total*100}
                                 token={onToken}
-                                stripeKey={KEY}>
-                                <Button onClick={checkUser}>CHECKOUT NOW</Button>
+                                stripeKey={KEY}
+                                >
+                                <Button disabled={userLogin===null}>
+                                    {userLogin!==null? "CHECKOUT NOW": "LOGIN TO CHECKOUT"}
+                                </Button>
                             </StripeCheckout>
 
                         </Summary>
