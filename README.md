@@ -17,7 +17,7 @@
 9) MM/YY: 08/24 
 10) CVV: 123
 11) Click on pay. A 3D Pin window will appear which you need to confirm.
-12) Viola, Your Order is placed. We will Ship your order to your doorstep now.
+12) Viola, Your Order is placed. You can sit back and Relax We will Ship your order to your doorstep now.
 
 ## Overview 
 
