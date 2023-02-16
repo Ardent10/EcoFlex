@@ -40,7 +40,7 @@
 ![Add-to-cart](https://user-images.githubusercontent.com/73132031/150625526-4ac4d4f1-b27f-44f3-b027-2cdb72a7a2f9.png)
 ##
 # Authentication 
-1) Register 
+1) Registeration Process 
 ![register](https://user-images.githubusercontent.com/73132031/150625566-d7469ebc-25e9-4fcd-8d07-3613e634a6f3.png)
 
 2) Login.
