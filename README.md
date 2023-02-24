@@ -53,7 +53,7 @@
 
 
 ## Cancel Order
-Click on the Shop icon on left top corner of the payment card which is "Back"
+Click on the Shop icon on left top corner of the payment card showing Back button
 ![s3](https://user-images.githubusercontent.com/73132031/150625775-fa5a4d51-1fc8-422c-acea-e2ddc19774f8.png)
 ![image](https://user-images.githubusercontent.com/73132031/150625807-203bb83e-ade5-4ce9-8151-1ad955a40ad5.png)
 
