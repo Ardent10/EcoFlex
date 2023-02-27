@@ -46,16 +46,13 @@
 2) Login.
 ![login](https://user-images.githubusercontent.com/73132031/150625575-287963fb-3e0a-4c79-975e-df3bac20cf49.png)
 ##
-# Payment
+# Payment.
 ![s1](https://user-images.githubusercontent.com/73132031/150625699-5b6f7282-37b6-494a-a195-12d2b7d69dc1.png)
 ![s2](https://user-images.githubusercontent.com/73132031/150625747-62e18cec-5853-414c-9424-52416f8e1c0d.png)
 ![c1](https://user-images.githubusercontent.com/73132031/150625752-b5bf0324-67f5-4e02-8100-c0c6dce94680.png)
 
 
-## Cancel Order
+## Cancel Order.
 Click on the Shop icon on left top corner of the payment card showing Back button
 ![s3](https://user-images.githubusercontent.com/73132031/150625775-fa5a4d51-1fc8-422c-acea-e2ddc19774f8.png)
 ![image](https://user-images.githubusercontent.com/73132031/150625807-203bb83e-ade5-4ce9-8151-1ad955a40ad5.png)
-
-
-
